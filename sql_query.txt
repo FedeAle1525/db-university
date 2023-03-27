@@ -25,3 +25,7 @@ Query 6:
         FROM `degrees` 
         WHERE `level` = 'magistrale' 
         ORDER BY `name`;
+
+Query 7:
+        SELECT COUNT(*) AS 'number_departaments' 
+        FROM `departments`;
