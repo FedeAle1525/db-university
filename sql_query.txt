@@ -29,3 +29,8 @@ Query 6:
 Query 7:
         SELECT COUNT(*) AS 'number_departaments' 
         FROM `departments`;
+
+Query 8:
+        SELECT COUNT(*) AS 'teachers_no_phone' 
+        FROM `teachers` 
+        WHERE `phone` IS NULL;
