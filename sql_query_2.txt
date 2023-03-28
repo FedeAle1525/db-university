@@ -64,3 +64,13 @@ Query 5:
         INNER JOIN `course_teacher` AS ct ON c.id = ct.course_id
         INNER JOIN `teachers` AS t ON t.id = ct.teacher_id
         ORDER BY dg.name;
+
+Query 6:
+        SELECT DISTINCT t.*, dp.id, dp.name
+        FROM `departments` AS dp
+        INNER JOIN `degrees` AS dg ON dp.id = dg.department_id
+        INNER JOIN `courses` AS c ON dg.id = c.degree_id
+        INNER JOIN `course_teacher` AS ct ON c.id = ct.course_id
+        INNER JOIN `teachers` AS t ON t.id = ct.teacher_id
+        WHERE dp.name = 'Dipartimento di Matematica'
+        ORDER BY t.surname, t.name;
