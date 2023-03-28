@@ -1,0 +1,6 @@
+GROUP BY
+
+Query 1:
+        SELECT COUNT(`id`) AS students_number, YEAR(`enrolment_date`) AS enrolment_year
+        FROM `students`
+        GROUP BY enrolment_year;
