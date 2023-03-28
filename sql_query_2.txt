@@ -31,3 +31,11 @@ Query 1:
         INNER JOIN `degrees`
         ON `degrees`.`id` = `students`.`degree_id`
         WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
+
+Query 2: 
+        SELECT `degrees`.*, `departments`.`id`, `departments`.`name`
+        FROM `departments`
+        INNER JOIN `degrees`
+        ON `departments`.`id` = `degrees`.`department_id`
+        WHERE `degrees`.`level` = 'magistrale'
+        AND `departments`.`name` = 'Dipartimento di Neuroscienze';
