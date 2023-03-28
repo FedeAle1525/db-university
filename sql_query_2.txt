@@ -10,3 +10,8 @@ Query 2:
         FROM `teachers`
         GROUP BY `office_address`
         ORDER BY `office_address`;
+
+Query 3:
+        SELECT `exam_id`, ROUND(AVG(`vote`),2) AS average_vote
+        FROM `exam_student`
+        GROUP BY `exam_id`;
