@@ -49,3 +49,10 @@ Query 3:
         ON c.id = ct.course_id
         WHERE t.name = 'Fulvio' AND t.surname = 'Amato'
         ORDER BY c.year, c.period;
+
+Query 4:
+        SELECT s.*, dg.*, dp.*
+        FROM `departments` AS dp
+        INNER JOIN `degrees` AS dg ON dp.id = dg.department_id
+        INNER JOIN `students` as s ON dg.id = s.degree_id
+        ORDER BY s.surname, s.name;
