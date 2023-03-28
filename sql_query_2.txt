@@ -74,3 +74,11 @@ Query 6:
         INNER JOIN `teachers` AS t ON t.id = ct.teacher_id
         WHERE dp.name = 'Dipartimento di Matematica'
         ORDER BY t.surname, t.name;
+
+Query 7: 
+        SELECT s.id, s.name, s.surname, c.id, c.name, COUNT(e.id) AS tentativi
+        FROM `students` AS s
+        INNER JOIN `exam_student` AS es ON s.id = es.student_id
+        INNER JOIN `exams` AS e ON e.id = es.exam_id
+        INNER JOIN `courses` AS c ON c.id = e.course_id
+        GROUP BY s.id, c.id;
