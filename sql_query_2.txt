@@ -20,3 +20,14 @@ Query 4:
         SELECT `department_id`, COUNT(`id`) AS degrees_number
         FROM `degrees`
         GROUP BY `department_id`;
+
+--------------------------------------------------------------------------------------------------
+
+INNER JOIN
+
+Query 1:
+        SELECT `students`.*, `degrees`.`id`, `degrees`.`name`
+        FROM `students`
+        INNER JOIN `degrees`
+        ON `degrees`.`id` = `students`.`degree_id`
+        WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
