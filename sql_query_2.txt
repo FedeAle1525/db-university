@@ -15,3 +15,8 @@ Query 3:
         SELECT `exam_id`, ROUND(AVG(`vote`),2) AS average_vote
         FROM `exam_student`
         GROUP BY `exam_id`;
+
+Query 4:
+        SELECT `department_id`, COUNT(`id`) AS degrees_number
+        FROM `degrees`
+        GROUP BY `department_id`;
