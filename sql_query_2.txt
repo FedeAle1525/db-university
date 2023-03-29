@@ -75,10 +75,22 @@ Query 6:
         WHERE dp.name = 'Dipartimento di Matematica'
         ORDER BY t.surname, t.name;
 
-Query 7: 
-        SELECT s.id, s.name, s.surname, c.id, c.name, COUNT(e.id) AS tentativi
+Query 7:
+        [Il MAX dei voti serve per escludere gli esami non superati se è < di 18]
+        SELECT s.id, s.name, s.surname, c.id, c.name, es.student_id, es.vote, COUNT(e.id) AS tentativi, MAX(es.vote) as vote_max
         FROM `students` AS s
         INNER JOIN `exam_student` AS es ON s.id = es.student_id
         INNER JOIN `exams` AS e ON e.id = es.exam_id
         INNER JOIN `courses` AS c ON c.id = e.course_id
-        GROUP BY s.id, c.id;
+        GROUP BY s.id, c.id
+        HAVING vote_max >= 18; ---> [Parola Chiave per filtrare dopo GROUP BY - equivalente a WHERE]
+
+        [Senza HAVING si può utilizzare una Query Annidata]
+        SELECT *
+        FROM (SELECT s.id, s.name, s.surname, c.id, c.name, es.student_id, es.vote, COUNT(e.id) AS tentativi, MAX(es.vote) as vote_max
+                FROM `students` AS s
+                INNER JOIN `exam_student` AS es ON s.id = es.student_id
+                INNER JOIN `exams` AS e ON e.id = es.exam_id
+                INNER JOIN `courses` AS c ON c.id = e.course_id
+                GROUP BY s.id, c.id) AS tentativi_studenti
+        WHERE vote_max >= 18;
